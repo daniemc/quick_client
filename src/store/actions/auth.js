@@ -15,7 +15,6 @@ export const loginUser = (payload) => (dispatch) => {
                 })
             }
         })
-        .catch(err => console.error(err));
 }
 
 export const logoutUser = () => (dispatch) => {

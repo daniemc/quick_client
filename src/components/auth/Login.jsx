@@ -39,7 +39,6 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    console.log(isAuth)
     if (isAuth) {
         return <Redirect to={{ pathname: "/home" }} />;
     }
