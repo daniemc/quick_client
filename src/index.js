@@ -5,6 +5,7 @@ import Router from './router/index';
 import { Provider } from 'react-redux';
 import store from './store';
 import NavBar from './components/app/NavBar';
+import './axios';
 
 ReactDOM.render(
   <React.StrictMode>
