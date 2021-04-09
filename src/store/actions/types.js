@@ -6,3 +6,5 @@ export const LOGOUT = 'LOGOUT';
 //app
 export const START_LOADING = 'START_LOADING';
 export const STOP_LOADING = 'STOP_LOADING';
+export const SHOW_MESSAGE = 'SHOW_MESSAGE';
+export const HIDE_MESSAGE = 'HIDE_MESSAGE';

@@ -2,9 +2,12 @@ import React from 'react'
 import {
     Backdrop,
     CircularProgress,
+    Snackbar,
 } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { hideMessage } from './../../store/actions/app';
 
 const useStylesLoader = makeStyles((theme) => ({
     backdrop: {
@@ -23,10 +26,38 @@ export const Loader = () => {
     )
 }
 
-export const Message = () => {
-    return (
-        <div>
+export const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
-        </div>
+export const Message = () => {
+    const {
+        text,
+        type,
+        autoClose,
+        open: isOpen,
+    } = useSelector((state) => state.app.message);
+
+    const dispatch = useDispatch();
+
+    return (
+        <Snackbar 
+            open={isOpen} 
+            autoHideDuration={autoClose}
+            onClose={(event, reason) => {
+                if (reason === 'clickaway') {
+                    return;
+                }
+                dispatch(hideMessage());
+            }}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+            }}
+        >
+            <Alert severity={type}>
+                {text}
+            </Alert>
+        </Snackbar>
     )
 }

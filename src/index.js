@@ -8,6 +8,7 @@ import store from './store';
 import NavBar from './components/app/NavBar';
 import {
   Loader,
+  Message,
 } from './components/app/FeedBack';
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
       <NavBar />
       <Router />
       <Loader />
+      <Message />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
