@@ -3,14 +3,22 @@ import {
     AppBar,
     Toolbar,
     Button,    
+    Typography,
+    Link,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../store/actions/auth';
 
 const styles = makeStyles((theme) => ({
-    toolbar: {
-        justifyContent: 'flex-end',
+    toolbarTitle: {
+        flexGrow: 1,
+    },
+    link: {
+        margin: theme.spacing(1, 1.5),
+    },
+    logout: {
+        margin: theme.spacing(1, 5),
     },
 }));
 
@@ -20,11 +28,30 @@ export default function NavBar() {
     const dispatch = useDispatch();
     return (
         <AppBar position="static">
-            <Toolbar className={classes.toolbar}>
+            <Toolbar>
+                <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                    DEEP BAR
+                </Typography>
+                <nav>
+                    <Link variant="button" color="inherit" href="/unit_measures" className={classes.link}>
+                        Unds de Medida
+                    </Link>
+                    <Link variant="button" color="inherit" href="/vendors" className={classes.link}>
+                        Proveedores
+                    </Link>
+                    <Link variant="button" color="inherit" href="/products" className={classes.link}>
+                        Productos
+                    </Link>
+                    <Link variant="button" color="inherit" href="/customers" className={classes.link}>
+                        Clientes
+                    </Link>
+                </nav>
                 {/* <Button color="inherit">Registrarme</Button> */}
                 {isAuth ? (
                     <Button 
+                        className={classes.logout}
                         color="inherit"
+                        variant="outlined"
                         onClick={() => dispatch(logoutUser())}
                     >Logout</Button>
                 ) : (
