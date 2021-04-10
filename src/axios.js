@@ -11,9 +11,9 @@ const BASE_URL = 'http://localhost:8000';
 axios.defaults.baseURL = BASE_URL;
 axios.interceptors.request.use((request) => {
     store.dispatch(startLoading());
-    const token = store.getState('auth.token');
+    const token = store.getState()?.auth?.token;
     if (!!token) {
-        request.headers.common['Authorization'] = `Bearer ${token}`
+        request.headers.common['Authorization'] = `JWT ${token}`
     }
     return request;
 });
