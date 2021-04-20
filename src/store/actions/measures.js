@@ -1,6 +1,8 @@
 import {
     SET_MEASURES,
     SAVE_MEASURE,
+    EDIT_MEASURE,
+    CANCEL_EDIT,
     UPDATE_MEASURE,
     DELETE_MEASURE,
 } from './types';
@@ -31,8 +33,18 @@ export const saveMeasure = (payload) => (dispatch) => {
         });
 }
 
+export const editMeasure = (payload) => (dispatch) => dispatch({
+    type: EDIT_MEASURE,
+    payload,
+})
+
+export const cancelEdit = () => (dispatch) => dispatch({
+    type: CANCEL_EDIT,
+})
+
+
 export const updateMeasure = (payload) => (dispatch) => {
-    axios.put('/api/measures', payload)
+    axios.put(`/api/measures/${payload.id}`, payload)
         .then((response) => {
             if (response.status === 200) {
                 console.log(response.data)

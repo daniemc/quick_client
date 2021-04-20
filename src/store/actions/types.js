@@ -12,5 +12,7 @@ export const HIDE_MESSAGE = 'HIDE_MESSAGE';
 //Measures
 export const SET_MEASURES = 'SET_MEASURES';
 export const SAVE_MEASURE = 'SAVE_MEASURE'; 
+export const EDIT_MEASURE = 'EDIT_MEASURE';
+export const CANCEL_EDIT = 'CANCEL_EDIT';
 export const UPDATE_MEASURE = 'UPDATE_MEASURE'; 
 export const DELETE_MEASURE = 'DELETE_MEASURE'; 

@@ -31,29 +31,31 @@ export default function NavBar() {
             <Toolbar>
                 <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
                     DEEP BAR
-                </Typography>
-                <nav>
-                    <Link variant="button" color="inherit" href="/unit_measures" className={classes.link}>
-                        Unds de Medida
-                    </Link>
-                    <Link variant="button" color="inherit" href="/vendors" className={classes.link}>
-                        Proveedores
-                    </Link>
-                    <Link variant="button" color="inherit" href="/products" className={classes.link}>
-                        Productos
-                    </Link>
-                    <Link variant="button" color="inherit" href="/customers" className={classes.link}>
-                        Clientes
-                    </Link>
-                </nav>
+                </Typography>                
                 {/* <Button color="inherit">Registrarme</Button> */}
                 {isAuth ? (
-                    <Button 
-                        className={classes.logout}
-                        color="inherit"
-                        variant="outlined"
-                        onClick={() => dispatch(logoutUser())}
-                    >Logout</Button>
+                    <React.Fragment>
+                        <nav>
+                            <Link variant="button" color="inherit" href="/unit_measures" className={classes.link}>
+                                Unds de Medida
+                            </Link>
+                            <Link variant="button" color="inherit" href="/vendors" className={classes.link}>
+                                Proveedores
+                            </Link>
+                            <Link variant="button" color="inherit" href="/products" className={classes.link}>
+                                Productos
+                            </Link>
+                            <Link variant="button" color="inherit" href="/customers" className={classes.link}>
+                                Clientes
+                            </Link>
+                        </nav>
+                        <Button 
+                            className={classes.logout}
+                            color="inherit"
+                            variant="outlined"
+                            onClick={() => dispatch(logoutUser())}
+                        >Logout</Button>
+                    </React.Fragment>
                 ) : (
                     <Button href="/login" color="inherit">Login</Button>
                 )}           

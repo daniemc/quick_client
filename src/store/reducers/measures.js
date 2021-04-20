@@ -1,12 +1,16 @@
 import {
     SET_MEASURES,
     SAVE_MEASURE,
+    EDIT_MEASURE,
+    CANCEL_EDIT,
     UPDATE_MEASURE,
     DELETE_MEASURE,
 } from './../actions/types';
 
 const initialState = {
     measures: [],
+    editing: false,
+    editingMeasure: {}
 }
 
 const measures = (state = { ...initialState }, action) => {
@@ -26,6 +30,19 @@ const measures = (state = { ...initialState }, action) => {
             return {
                 measures: [...newMeasures],
             }
+
+        case EDIT_MEASURE:
+            return {
+                ...state,
+                editingMeasure: { ...payload },
+                editing: true,
+            }
+        case CANCEL_EDIT:
+            return {
+                ...state,
+                editing: false,
+                editingMeasure: {},
+            }    
                    
         case UPDATE_MEASURE:
             newMeasures = state.measures.map((measure) => {
