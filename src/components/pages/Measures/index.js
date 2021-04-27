@@ -1,6 +1,9 @@
 import React from 'react'
 import MeasuresForm from './MeasuresForm';
 import MeasuresList from './MeasuresList';
+import {
+    Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     fetchMeasures,
@@ -12,6 +15,7 @@ import {
 const useStyles = makeStyles((theme) => ({
     measuresContainer:{
         margin: theme.spacing(10),
+        marginTop: theme.spacing(5),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -27,6 +31,10 @@ export default function Measures() {
 
     return (
         <div className={classes.measuresContainer}>
+            <Typography variant="h4" gutterBottom>
+                Unidades de Medida
+            </Typography>
+            <br />
             <MeasuresForm />
             <br />
             <MeasuresList />
