@@ -13,6 +13,7 @@ import {
     updateMeasure,
     cancelEdit,
 } from './../../../store/actions/measures';
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MeasuresForm() {
     const classes = useStyles();
     const dispatch = useDispatch();  
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const editing = useSelector((state) => state.measures.editing);
     const editingMeasure = useSelector((state) => state.measures.editingMeasure);
@@ -40,6 +42,13 @@ export default function MeasuresForm() {
         level: '',
     }));
 
+    const cleanForm = () => setForm({
+        id: null,
+        name: '',
+        description: '',
+        level: '',
+    });
+
     useEffect(() => {
         if (editing) {
             setForm({
@@ -50,58 +59,63 @@ export default function MeasuresForm() {
             })
             return;
         }
-        setForm({
-            id: null,
-            name: '',
-            description: '',
-            level: '',
-        })
-    }, [editing, editingMeasure])
+        cleanForm()
+    }, [editing, editingMeasure]);
+    
 
     const handleChangeData = (e) => setForm({
         ...form, 
         [e.target.name]: e.target.value,
     });
 
-    const handleSubmitForm = () => {
-        //TODO: Validate form
+    const handleSubmitForm = (data) => {                
         if(!editing) {
             dispatch(saveMeasure(form));
+            cleanForm();
             return;
         }
         dispatch(updateMeasure(form));
     }
+    
     return (
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit(handleSubmitForm)}>
             <TextField 
+                {...register('name', { required: true })}
                 name="name" 
                 value={form.name} 
                 className={classes.textField} 
                 label="Nombre" 
-                required 
                 onChange={(e) => handleChangeData(e)}
+                error={!!errors.name}
+                helperText={!!errors.name && 'Campo requerido'}
             />
             <TextField 
                 name="description" 
+                {...register('description', { required: true })}
                 value={form.description} 
                 className={classes.textField} 
                 label="Descripción" 
                 onChange={(e) => handleChangeData(e)}
+                error={!!errors.description}
+                helperText={!!errors.description && 'Campo requerido'}
             />
             <TextField 
                 name="level" 
+                {...register('level', { required: true })}
                 value={form.level} 
                 className={classes.textField} 
                 label="Orden/Nivel" 
-                required 
                 onChange={(e) => handleChangeData(e)}
+                type="number" 
+                error={!!errors.level}
+                helperText={!!errors.level && 'Campo requerido'}
             />
             {!editing ? (
                 <Button 
                     className={classes.button} 
                     color="primary" 
                     variant="contained"
-                    onClick={() => handleSubmitForm()}
+                    onClick={handleSubmit(handleSubmitForm)}
                 >
                     Guardar
                 </Button>
@@ -111,7 +125,7 @@ export default function MeasuresForm() {
                         className={classes.button} 
                         color="primary" 
                         variant="contained"
-                        onClick={() => handleSubmitForm()}
+                        onClick={handleSubmit(handleSubmitForm)}
                     >
                         Actualizar
                     </Button>

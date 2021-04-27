@@ -28,7 +28,7 @@ const measures = (state = { ...initialState }, action) => {
         case SAVE_MEASURE:
             newMeasures = state.measures.concat([{ ...payload }])
             return {
-                measures: [...newMeasures],
+                measures: [...newMeasures],                
             }
 
         case EDIT_MEASURE:
