@@ -16,3 +16,11 @@ export const EDIT_MEASURE = 'EDIT_MEASURE';
 export const CANCEL_EDIT = 'CANCEL_EDIT';
 export const UPDATE_MEASURE = 'UPDATE_MEASURE'; 
 export const DELETE_MEASURE = 'DELETE_MEASURE'; 
+
+//Vendors
+export const SET_VENDORS = 'SET_VENDORS';
+export const SAVE_VENDOR = 'SAVE_VENDOR';
+export const EDIT_VENDOR = 'EDIT_VENDOR';
+export const CANCEL_EDIT_VENDOR = 'CANCEL_EDIT_VENDOR';
+export const UPDATE_VENDOR = 'UPDATE_VENDOR';
+export const DELETE_VENDOR = 'DELETE_VENDOR';
