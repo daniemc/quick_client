@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MeasuresForm() {
     const classes = useStyles();
     const dispatch = useDispatch();  
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
 
     const editing = useSelector((state) => state.measures.editing);
     const editingMeasure = useSelector((state) => state.measures.editingMeasure);
@@ -42,12 +42,20 @@ export default function MeasuresForm() {
         level: '',
     }));
 
-    const cleanForm = () => setForm({
-        id: null,
-        name: '',
-        description: '',
-        level: '',
-    });
+    const cleanForm = () => {
+        setForm({
+            id: null,
+            name: '',
+            description: '',
+            level: '',
+        })
+        reset({
+            id: null,
+            name: '',
+            description: '',
+            level: '',
+        })
+    };
 
     useEffect(() => {
         if (editing) {
@@ -57,6 +65,9 @@ export default function MeasuresForm() {
                 description: editingMeasure.description,
                 level: editingMeasure.level,
             })
+            setValue('name', editingMeasure.name);
+            setValue('description', editingMeasure.description);
+            setValue('level', editingMeasure.level);            
             return;
         }
         cleanForm()
@@ -75,7 +86,7 @@ export default function MeasuresForm() {
             return;
         }
         dispatch(updateMeasure(form));
-    }
+    }    
     
     return (
         <form className={classes.form} onSubmit={handleSubmit(handleSubmitForm)}>
