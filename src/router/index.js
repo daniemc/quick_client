@@ -8,6 +8,7 @@ import Login from '../components/auth/Login';
 import Home from '../components/app/Home';
 import Measures from '../components/pages/Measures';
 import Vendors from '../components/pages/Vendors';
+import Products from '../components/pages/Products';
 
 const Router = () => (
     <BrowserRouter>
@@ -16,6 +17,7 @@ const Router = () => (
             <PrivateRoute path="/home" component={Home} />
             <PrivateRoute path="/unit_measures" component={Measures} />
             <PrivateRoute path="/vendors" component={Vendors} />
+            <PrivateRoute path="/products" component={Products} />
             <Route path="*" component={NotFound} />
         </Switch>
     </BrowserRouter>

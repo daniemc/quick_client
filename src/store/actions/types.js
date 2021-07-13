@@ -24,3 +24,11 @@ export const EDIT_VENDOR = 'EDIT_VENDOR';
 export const CANCEL_EDIT_VENDOR = 'CANCEL_EDIT_VENDOR';
 export const UPDATE_VENDOR = 'UPDATE_VENDOR';
 export const DELETE_VENDOR = 'DELETE_VENDOR';
+
+//products
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+export const SAVE_PRODUCT = 'SAVE_PRODUCT';
+export const EDIT_PRODUCT = 'EDIT_PRODUCT';
+export const CANCEL_EDIT_PRODUCT = 'CANCEL_EDIT_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
