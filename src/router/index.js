@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoute';
 
 import NotFound from '../components/app/NotFound';
 import Login from '../components/auth/Login';
+import Register from '../components/auth/Register';
 import Home from '../components/app/Home';
 import Measures from '../components/pages/Measures';
 import Vendors from '../components/pages/Vendors';
@@ -14,6 +15,7 @@ const Router = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
             <PrivateRoute path="/home" component={Home} />
             <PrivateRoute path="/unit_measures" component={Measures} />
             <PrivateRoute path="/vendors" component={Vendors} />

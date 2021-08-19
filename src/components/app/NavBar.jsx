@@ -57,7 +57,10 @@ export default function NavBar() {
                         >Logout</Button>
                     </React.Fragment>
                 ) : (
-                    <Button href="/login" color="inherit">Login</Button>
+                    <React.Fragment>
+                        <Button href="/login" color="inherit">Login</Button>
+                        <Button href="/register" color="inherit">Registro</Button>
+                    </React.Fragment>
                 )}           
                 
             </Toolbar>
